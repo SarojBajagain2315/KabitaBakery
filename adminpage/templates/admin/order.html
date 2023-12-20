@@ -1,0 +1,50 @@
+{% extends 'admin/adminlayout.html' %}
+
+
+{% block title %}
+<title>Admin-users Order</title>
+{% endblock %}
+
+{% block main-content %}
+
+<div class="container">
+    <div class="row d-flexjustify-content-center">
+      
+        <table class="table table-bordered tabl-striped my-5">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th>Payment status</th>
+                    <th>Order status</th>
+                    <th>Product Method</th>
+                    <th>Product Image</th>
+                    <th>Action</th>
+                    
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{item.product.project_name}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>Rs.{{item.total_price}}</td>
+                    <td>{{item.payment_status}}</td>
+                    <td>{{item.status}}</td>
+                    <td>{{item.payment_method}}</td>
+
+                  
+                    <td><img src="/{{item.product.product_image}}" alt="{{item.product.project_name}}" width="100"></td>
+                    <td><a href="#"><i class="btn btn-primary fas fa-edit"></i></a></td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+{% endblock %}

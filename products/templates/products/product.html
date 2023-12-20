@@ -1,0 +1,78 @@
+{% extends 'admin/adminlayout.html' %}
+{% load static %}
+
+{% block title %}
+<title>products</title>
+{% endblock %}
+
+
+{% block main-content %}
+
+
+<!-- {% for product in Products %} -->
+<!-- <h1> Product Name: {{product.project_name}}</h1>
+<h1>Product Price: {{product.product_price}}</h1>
+<img src="{{product.product_image}}" width="300">
+
+{% endfor %} 
+
+<img src="{% static 'images/i1.jpg' %}" alt="" width="500"> -->
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+            {% for msg in messages %}
+
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="alert alert-success" >
+                {{msg}}
+            </div>
+            {% endif %}
+
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div class="alert alert-danger" >
+                {{msg}}
+            </div>
+            {% endif %}
+
+            {% endfor %}
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Product Name</th>
+                    <th>Product Price</th>
+                    <th>Stock Quantity</th>
+                    <th>Product Description</th>
+                    <th>Category</th>
+                    <th>product Image</th>
+                    <th style="padding: 0 20px;">Product Status</th>
+                    
+
+                </tr>
+      
+                {% for product in products %}
+                <tr>
+                    <td>{{product.project_name}}</td>
+                    <td>{{product.product_price}}</td>
+                    <td>{{product.stock}}</td>
+                    <td>{{product.product_description}}</td>
+                    <td>{{product.Category}}</td>
+            
+                    <td><img src="/{{product.product_image}}" alt="{{product.product_images}}" width="100"></td>
+
+                    <td><a href="/products/updateproduct/{{product.id}}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                        
+                        <a href="/products/deleteproduct/{{product.id}}" class="btn btn-danger" onclick="return confirm('Are you sure want to delete this product?')"><i class="fa-solid fa-trash"></i></a>
+                    </td>
+                
+
+                </tr>
+                {% endfor %}
+             
+
+                
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+<title>Cart List</title>
+{% include 'userpage/header.html' %}
+{% endblock %}
+
+
+{% block main-content %}
+<!-- start of product details section -->
+<div class="container">
+    <div class="row d-flex my-5 shadow justify-content-between p-2 border" style="background-color:white ;">
+        <div class="col-md-4">
+            <img  src="/{{product.product_image}}" alt="{{product.project.name}}" width="550">
+            
+        </div>
+       
+        <div class="col-md-6 text-dark">
+            <h2 class="card-title mt-3">{{product.project_name}}</h2>
+            <hr>
+            <h5 class="mt-2 fw-lighter"><Span class="text-danger fw-bold">Price : </Span><span style="font-size: 18px ;font-weight: 200;">Rs.{{product.product_price}}</span></h5>
+            
+            <p class="mt-4">{{product.product_description}}</p>
+            <div>
+               <ul class="list-unstyled d-flex">
+                <li class=""><a class="text-warning" href="#"><i class="fa-solid fa-star"></i></a></li>
+                <li class="ms-2"><a class="text-warning" href="#"><i class="fa-solid fa-star"></i></a></li>
+                <li class="ms-2"><a class="text-warning" href="#"><i class="fa-solid fa-star"></i></a></li>
+                <li class="ms-2"><a class="text-warning" href="#"><i class="fa-solid fa-star"></i></a></li>
+                <li class="ms-2"><a class="text-warning" href="#"><i class="fa-regular fa-star"></i></a></li>
+            </ul>
+                
+            </div>
+            <a href="/addtocart/{{product.id}}" class="btn btn-warning text-danger">Add to cart</a>
+
+        </div>
+    </div>
+</div>
+<!-- end of product details section -->
+
+
+{% include 'userpage/footer.html' %}
+{% endblock %}
